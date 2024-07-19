@@ -12,6 +12,11 @@ app = FastAPI()
 def read_root():
     return {"Hello": "World"}
 
+# обрабатываем GET-запросы к URL /service-status
+@app.get("/service-status")
+def health_check():
+    return {"status": "ok"}
+
 # обрабатываем запросы к специальному пути для получения предсказания модели
 # временно имитируем предсказание со случайной генерацией score
 @app.get("/api/churn/{user_id}")
